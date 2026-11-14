@@ -1,0 +1,35 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "app": {
+      "root": ".",
+      "runtime": "python"
+    },
+    "client": {
+      "root": "client",
+      "framework": "nextjs"
+    },
+    "server": {
+      "root": "server",
+      "framework": "express"
+    },
+    "analog-engine": {
+      "root": "server/analog-engine",
+      "framework": "express"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": {
+        "service": "server"
+      }
+    },
+    {
+      "source": "/(.*)",
+      "destination": {
+        "service": "app"
+      }
+    }
+  ]
+}
